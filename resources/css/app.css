@@ -1,0 +1,107 @@
+/* Importations */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Importation de Bootstrap - choisissez UNE solution (Tailwind OU Bootstrap) */
+
+
+/* @import 'bootstrap'; */
+
+
+/* Décommentez si vous voulez utiliser Bootstrap au lieu de Tailwind */
+
+
+/* Custom styles */
+
+@layer components {
+    /* Animation pour les formulaires */
+    .card {
+        @apply transition-transform duration-300 ease-in-out;
+    }
+    .card:hover {
+        @apply transform -translate-y-1;
+    }
+    /* Style personnalisé pour les inputs */
+    .form-control:focus {
+        @apply border-blue-500 ring-4 ring-blue-200;
+    }
+    /* Style pour le footer des cartes */
+    .card-footer {
+        @apply bg-gray-50;
+    }
+}
+
+
+/* Font personnalisée */
+
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../fonts/InstrumentSans-VariableFont_wdth,wght.ttf') format('truetype');
+}
+
+
+/* Variables CSS */
+
+:root {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+body {
+    font-family: var(--font-sans);
+}
+
+
+}
+
+/* Font personnalisée */
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../fonts/InstrumentSans-VariableFont_wdth,wght.ttf') format('truetype');
+}
+
+/* Variables CSS */
+:root {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+body {
+    font-family: var(--font-sans);
+}
+root {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+body {
+    font-family: var(--font-sans);
+}
+'Apple Color Emoji',
+'Segoe UI Emoji',
+'Segoe UI Symbol',
+'Noto Color Emoji';
+
+}
+body {
+    font-family: var(--font-sans);
+}
+ody {
+    font-family: var(--font-sans);
+}
+
+/* Variables CSS */
+:root {
+    --font-sans: 'Instrument Sans',
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+body {
+    font-family: var(--font-sans);
+}   'Noto Color Emoji';
+}
+body {
+    font-family: var(--font-sans);
+}
