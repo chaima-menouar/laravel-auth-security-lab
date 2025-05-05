@@ -1,55 +1,37 @@
-/* Importations */
-
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-/* Importation de Bootstrap - choisissez UNE solution (Tailwind OU Bootstrap) */
-
-
-/* @import 'bootstrap'; */
-
-
-/* Décommentez si vous voulez utiliser Bootstrap au lieu de Tailwind */
-
-
-/* Custom styles */
-
-@layer components {
-    /* Animation pour les formulaires */
-    .card {
-        @apply transition-transform duration-300 ease-in-out;
-    }
-    .card:hover {
-        @apply transform -translate-y-1;
-    }
-    /* Style personnalisé pour les inputs */
-    .form-control:focus {
-        @apply border-blue-500 ring-4 ring-blue-200;
-    }
-    /* Style pour le footer des cartes */
-    .card-footer {
-        @apply bg-gray-50;
-    }
-}
-
-
-/* Font personnalisée */
-
-@font-face {
-    font-family: 'Instrument Sans';
-    src: url('../fonts/InstrumentSans-VariableFont_wdth,wght.ttf') format('truetype');
-}
-
-
-/* Variables CSS */
-
-:root {
+@import 'tailwindcss';
+@import 'bootstrap';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-body {
-    font-family: var(--font-sans);
+
+/* Animation pour les formulaires */
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Style personnalisé pour les inputs */
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+/* Style pour le footer des cartes */
+
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 
@@ -74,16 +56,27 @@ root {
 body {
     font-family: var(--font-sans);
 }
-'Apple Color Emoji',
-'Segoe UI Emoji',
-'Segoe UI Symbol',
-'Noto Color Emoji';
 
 }
-body {
-    font-family: var(--font-sans);
+
+/* Font personnalisée */
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../fonts/InstrumentSans-VariableFont_wdth,wght.ttf') format('truetype');
 }
-ody {
+
+/* Variables CSS */
+:root {
+    --font-sans: 'Instrument Sans',
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+body {
     font-family: var(--font-sans);
 }
 
@@ -99,6 +92,29 @@ ody {
     'Noto Color Emoji';
 }
 body {
+    font-family: var(--font-sans);
+}
+'Noto Color Emoji';
+
+}
+body {
+    font-family: var(--font-sans);
+}
+font-family: var(--font-sans);
+
+}
+'Noto Color Emoji';
+
+}
+body {
+    font-family: var(--font-sans);
+}
+'Noto Color Emoji';
+
+}
+body {
+    font-family: var(--font-sans);
+}ody {
     font-family: var(--font-sans);
 }   'Noto Color Emoji';
 }
