@@ -1,123 +1,37 @@
 @import 'tailwindcss';
 @import 'bootstrap';
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+:root {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
-
-/* Animation pour les formulaires */
+body {
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background-color: #f8f9fa;
+}
 
 .card {
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
 }
-
-
-/* Style personnalisé pour les inputs */
 
 .form-control:focus {
     border-color: #0d6efd;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-
-/* Style pour le footer des cartes */
-
 .card-footer {
     background-color: rgba(0, 0, 0, 0.03);
-}
-
-
-}
-
-/* Font personnalisée */
-@font-face {
-    font-family: 'Instrument Sans';
-    src: url('../fonts/InstrumentSans-VariableFont_wdth,wght.ttf') format('truetype');
-}
-
-/* Variables CSS */
-:root {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-}
-body {
-    font-family: var(--font-sans);
-}
-root {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-}
-body {
-    font-family: var(--font-sans);
-}
-
-}
-
-/* Font personnalisée */
-@font-face {
-    font-family: 'Instrument Sans';
-    src: url('../fonts/InstrumentSans-VariableFont_wdth,wght.ttf') format('truetype');
-}
-
-/* Variables CSS */
-:root {
-    --font-sans: 'Instrument Sans',
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji';
-}
-body {
-    font-family: var(--font-sans);
-}
-
-/* Variables CSS */
-:root {
-    --font-sans: 'Instrument Sans',
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji';
-}
-body {
-    font-family: var(--font-sans);
-}
-'Noto Color Emoji';
-
-}
-body {
-    font-family: var(--font-sans);
-}
-font-family: var(--font-sans);
-
-}
-'Noto Color Emoji';
-
-}
-body {
-    font-family: var(--font-sans);
-}
-'Noto Color Emoji';
-
-}
-body {
-    font-family: var(--font-sans);
-}ody {
-    font-family: var(--font-sans);
-}   'Noto Color Emoji';
-}
-body {
-    font-family: var(--font-sans);
 }
