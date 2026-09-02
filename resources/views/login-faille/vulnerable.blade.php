@@ -1,15 +1,26 @@
 @extends('layouts.app')
 
-@section('title', 'Login Vulnérable')
+@section('title', 'Vulnerable Login Demo')
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-7 col-lg-5">
         <div class="card border-danger shadow-sm">
             <div class="card-header bg-danger text-white">
-                <h4 class="mb-0">Connexion Vulnérable</h4>
+                <h1 class="h4 mb-0">Vulnerable Login Demo</h1>
             </div>
+
             <div class="card-body">
+                <div class="alert alert-warning">
+                    <strong>Local security demonstration only.</strong>
+
+                    <ul class="mb-0 mt-2">
+                        <li>No input validation</li>
+                        <li>No login rate limiting</li>
+                        <li>No session ID regeneration</li>
+                    </ul>
+                </div>
+
                 @if(session('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
@@ -18,23 +29,43 @@
 
                 <form method="POST" action="{{ route('login.vulnerable') }}">
                     @csrf
+
                     <div class="mb-3">
-                        <label class="form-label">Email ou SQL Injection</label>
-                        <input type="text" class="form-control" name="email">
+                        <label for="email" class="form-label">
+                            Email address
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                        >
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="password">
+                        <label for="password" class="form-label">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            autocomplete="current-password"
+                        >
                     </div>
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-danger">
-                            <i class="bi bi-exclamation-triangle me-2"></i>Tester la vulnérabilité
-                        </button>
-                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100">
+                        Test vulnerable login
+                    </button>
                 </form>
             </div>
-            <div class="card-footer text-center bg-danger bg-opacity-10">
-                <small class="text-danger">Attention: Ce formulaire est intentionnellement vulnérable</small>
+
+            <div class="card-footer text-danger">
+                This route is available only in local and testing environments.
             </div>
         </div>
     </div>
