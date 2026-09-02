@@ -5,19 +5,9 @@ namespace App\Http\Controllers\LoginFaille;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Routing\Middleware\ThrottleRequests;
-use Illuminate\Validation\ValidationException;
 
 class SecureLoginController extends Controller
 {
-    protected $maxAttempts = 3;
-    protected $decayMinutes = 5;
-
-    public function __construct()
-    {
-        $this->middleware('throttle:'.$this->maxAttempts.','.$this->decayMinutes)->only('login');
-    }
-
     public function showForm()
     {
         return view('login-faille.secure');
@@ -30,13 +20,16 @@ class SecureLoginController extends Controller
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+
+            return redirect()->intended(route('dashboard'));
         }
 
-        throw ValidationException::withMessages([
-            'email' => __('auth.failed'),
-        ]);
+        return back()
+            ->withErrors([
+                'email' => 'Invalid email or password.',
+            ])
+            ->onlyInput('email');
     }
 }
