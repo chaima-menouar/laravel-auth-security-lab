@@ -16,14 +16,20 @@ class StandardLoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('dashboard'));
         }
 
-        return back()->withErrors(['email' => 'Identifiants invalides']);
+        return back()
+            ->withErrors([
+                'email' => 'Invalid email or password.',
+            ])
+            ->onlyInput('email');
     }
 }
