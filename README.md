@@ -1,61 +1,226 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Laravel Authentication Security Lab
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+An educational Laravel application that compares vulnerable, standard, and hardened authentication flows. The project demonstrates how validation, generic error messages, login throttling, session regeneration, protected routes, and secure logout improve authentication security.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Project Objective
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The objective of this lab is to demonstrate authentication security controls through three implementations:
 
-## Learning Laravel
+Authentication flow
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Input validation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Generic errors
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Rate limiting
 
-## Laravel Sponsors
+Session regeneration
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Availability
 
-### Premium Partners
+Vulnerable
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+No
 
-## Contributing
+No
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+No
 
-## Code of Conduct
+No
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Local and testing only
 
-## Security Vulnerabilities
+Standard
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Yes
 
-## License
+Yes
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+No
+
+Yes
+
+All environments
+
+Secure
+
+Yes
+
+Yes
+
+3 attempts per 5 minutes
+
+Yes
+
+All environments
+
+The vulnerable implementation is intentionally restricted to local and testing environments. It must never be exposed in production.
+
+Security Controls Demonstrated
+
+Server-side input validation
+
+Generic authentication failure messages
+
+Login attempt rate limiting
+
+Session ID regeneration after authentication
+
+CSRF protection on forms
+
+Authentication middleware for protected routes
+
+Session invalidation and CSRF token regeneration on logout
+
+Environment-based isolation of the vulnerable demonstration
+
+Technology Stack
+
+PHP 8.2+
+
+Laravel 12
+
+SQLite
+
+Blade
+
+Bootstrap 5
+
+Tailwind CSS 4
+
+Vite 6
+
+PHPUnit 11
+
+GitHub Actions
+
+Application Routes
+
+Route
+
+Description
+
+Access
+
+/
+
+Security lab overview
+
+Public
+
+/auth/vulnerable
+
+Intentionally weak authentication demonstration
+
+Local and testing only
+
+/auth/standard
+
+Standard authentication flow
+
+Guests
+
+/auth/secure
+
+Hardened authentication flow
+
+Guests
+
+/dashboard
+
+Protected dashboard
+
+Authenticated users
+
+Local Installation
+
+Prerequisites
+
+PHP 8.2 or later
+
+Composer
+
+Node.js 20 or later
+
+npm
+
+SQLite
+
+Setup
+
+git clone https://github.com/chaima-menouar/laravel-auth-security-lab.git
+cd laravel-auth-security-lab
+
+composer install
+npm install
+
+cp .env.example .env
+php artisan key:generate
+
+php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+php artisan migrate --seed
+
+npm run build
+php artisan serve
+
+Open http://127.0.0.1:8000 in your browser.
+
+Local Demo Account
+
+The database seeder creates the following local account:
+
+Email: test@example.com
+Password: password
+
+These credentials are for local demonstration only and must not be used in production.
+
+Running the Tests
+
+php artisan test
+
+The feature test suite verifies:
+
+Public access to the landing page
+
+Redirection of unauthenticated users
+
+Successful standard authentication
+
+Successful secure authentication
+
+Rejection of invalid credentials
+
+Rate limiting after repeated login attempts
+
+Secure logout behavior
+
+GitHub Actions automatically installs the dependencies, builds the frontend assets, and runs the test suite after each push or pull request to the main branch.
+
+Project Structure
+
+app/Http/Controllers/LoginFaille/
+    StandardLoginController.php
+    SecureLoginController.php
+    VulnerableLoginController.php
+
+resources/views/login-faille/
+    standard.blade.php
+    secure.blade.php
+    vulnerable.blade.php
+
+routes/web.php
+tests/Feature/AuthenticationSecurityTest.php
+.github/workflows/tests.yml
+
+Security Notice
+
+This repository is an educational security lab. The vulnerable authentication flow intentionally omits important protections so that the implementations can be compared. Run the vulnerable demonstration only in an isolated local or testing environment.
+
+Author
+
+Chaima Menouar
+AI and Digital Transformation Engineering Student
+
+LinkedIn
