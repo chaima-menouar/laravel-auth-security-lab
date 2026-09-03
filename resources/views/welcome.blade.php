@@ -3,6 +3,11 @@
 @section('title', 'Laravel Authentication Security Lab')
 
 @section('content')
+@php
+    $showVulnerableDemo = app()->environment(['local', 'testing']);
+    $loginColumnClass = $showVulnerableDemo ? 'col-md-4' : 'col-md-6';
+@endphp
+
 <div class="py-5">
     <div class="text-center mb-5">
         <h1 class="display-5 fw-bold">
@@ -16,34 +21,36 @@
     </div>
 
     <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 border-danger shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4">Vulnerable Login</h2>
+        @if($showVulnerableDemo)
+            <div class="col-md-4">
+                <div class="card h-100 border-danger shadow-sm">
+                    <div class="card-body">
+                        <h2 class="h4">Vulnerable Login</h2>
 
-                    <p class="text-muted">
-                        Demonstrates common authentication weaknesses,
-                        including missing validation, rate limiting,
-                        and session regeneration.
-                    </p>
+                        <p class="text-muted">
+                            Demonstrates common authentication weaknesses,
+                            including missing validation, rate limiting,
+                            and session regeneration.
+                        </p>
 
-                    <span class="badge text-bg-danger">
-                        Local / Testing Only
-                    </span>
-                </div>
+                        <span class="badge text-bg-danger">
+                            Local / Testing Only
+                        </span>
+                    </div>
 
-                <div class="card-footer">
-                    <a
-                        href="{{ route('login.vulnerable.form') }}"
-                        class="btn btn-outline-danger"
-                    >
-                        Open Demo
-                    </a>
+                    <div class="card-footer">
+                        <a
+                            href="{{ route('login.vulnerable.form') }}"
+                            class="btn btn-outline-danger"
+                        >
+                            Open Demo
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
 
-        <div class="col-md-4">
+        <div class="{{ $loginColumnClass }}">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <h2 class="h4">Standard Login</h2>
@@ -65,7 +72,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="{{ $loginColumnClass }}">
             <div class="card h-100 border-success shadow-sm">
                 <div class="card-body">
                     <h2 class="h4">Secure Login</h2>
