@@ -1,55 +1,57 @@
+<div align="center">
+
 # Laravel Authentication Security Lab
 
-[![Laravel Tests](https://github.com/chaima-menouar/laravel-auth-security-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/chaima-menouar/laravel-auth-security-lab/actions/workflows/tests.yml)
+### Compare vulnerable, standard & hardened authentication flows
 
-An educational Laravel application that compares vulnerable, standard, and hardened authentication flows. It demonstrates how validation, generic error messages, login throttling, session regeneration, protected routes, and secure logout change the security posture of a login system.
+**Validation · generic errors · throttling · session regeneration · CSRF · protected routes · secure logout**
+
+[![Laravel Tests](https://github.com/chaima-menouar/laravel-auth-security-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/chaima-menouar/laravel-auth-security-lab/actions/workflows/tests.yml)
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
+![Security](https://img.shields.io/badge/Security-Educational%20Lab-2563EB)
+
+</div>
+
+An educational Laravel application that demonstrates how small authentication decisions materially change security posture. Three login paths are kept separate so the differences are visible and testable.
 
 ## Architecture
 
-![Authentication security architecture](docs/architecture.svg)
+![Authentication security architecture](docs/architecture-modern.svg)
 
-The three flows are intentionally separated for comparison. The vulnerable variant is restricted to local/testing environments, while the standard and secure flows use Laravel's normal application boundary and authenticated dashboard.
+The intentionally weak flow is restricted to local/testing environments. Standard and hardened paths use Laravel's normal authenticated application boundary.
 
-## Project objective
+## Security comparison
 
-| Authentication flow | Input validation | Generic errors | Rate limiting | Session regeneration | Availability |
+| Authentication flow | Validation | Generic errors | Rate limiting | Session regeneration | Availability |
 |---|---:|---:|---:|---:|---|
 | Vulnerable | No | No | No | No | Local/testing only |
 | Standard | Yes | Yes | No | Yes | All environments |
 | Secure | Yes | Yes | 3 attempts / 5 min | Yes | All environments |
 
-## Security controls demonstrated
+## Controls demonstrated
 
 - server-side input validation;
-- generic authentication failure messages;
-- login attempt rate limiting;
+- generic authentication-failure messages;
+- login-attempt rate limiting;
 - session ID regeneration after authentication;
 - CSRF protection on forms;
 - authentication middleware for protected routes;
 - session invalidation and CSRF-token regeneration on logout;
-- environment-based isolation of the intentionally vulnerable demonstration.
+- environment-based isolation of intentionally vulnerable behavior.
 
 ## Technology stack
 
-- PHP 8.2+
-- Laravel 12
-- SQLite
-- Blade
-- Bootstrap 5
-- Tailwind CSS 4
-- Vite 6
-- PHPUnit 11
-- GitHub Actions
+`PHP 8.2+` · `Laravel 12` · `SQLite` · `Blade` · `Bootstrap 5` · `Tailwind CSS 4` · `Vite 6` · `PHPUnit 11` · `GitHub Actions`
 
-## Application routes
+## Routes
 
 | Route | Purpose | Access |
 |---|---|---|
 | `/` | Security lab overview | Public |
-| `/auth/vulnerable` | Intentionally weak authentication demo | Local/testing only |
-| `/auth/standard` | Standard authentication flow | Guests |
-| `/auth/secure` | Hardened authentication flow | Guests |
-| `/dashboard` | Protected dashboard | Authenticated users |
+| `/auth/vulnerable` | Intentionally weak demo | Local/testing only |
+| `/auth/standard` | Standard login | Guests |
+| `/auth/secure` | Hardened login | Guests |
+| `/dashboard` | Protected workspace | Authenticated users |
 
 ## Local installation
 
@@ -68,14 +70,14 @@ php artisan serve
 
 Open `http://127.0.0.1:8000`.
 
-## Local demo account
+### Demo account
 
 ```text
 Email: test@example.com
 Password: password
 ```
 
-These credentials are for local demonstration only.
+Local demonstration only.
 
 ## Testing
 
@@ -83,31 +85,12 @@ These credentials are for local demonstration only.
 php artisan test
 ```
 
-The feature tests cover public routing, guest protection, successful authentication, invalid credentials, throttling, and secure logout behavior. GitHub Actions installs dependencies, builds frontend assets, and runs the test suite on pushes and pull requests.
-
-## Project structure
-
-```text
-app/Http/Controllers/LoginFaille/
-    StandardLoginController.php
-    SecureLoginController.php
-    VulnerableLoginController.php
-
-resources/views/login-faille/
-    standard.blade.php
-    secure.blade.php
-    vulnerable.blade.php
-
-routes/web.php
-tests/Feature/AuthenticationSecurityTest.php
-.github/workflows/tests.yml
-```
+Feature tests cover routing, guest protection, successful authentication, invalid credentials, throttling and secure logout. GitHub Actions installs dependencies, builds assets and runs the test suite.
 
 ## Security notice
 
-This is an educational security lab. The vulnerable flow intentionally omits important protections and must never be exposed as a production login path.
+This repository intentionally contains an insecure authentication example for learning purposes. That route must never be exposed as a production login path.
 
 ## Author
 
-**Chaima Menouar**  
-AI & Digital Transformation Engineering Student
+**Chaima Menouar** · AI & Digital Transformation Engineering Student
